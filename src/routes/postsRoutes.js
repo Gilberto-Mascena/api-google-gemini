@@ -1,16 +1,11 @@
 import express from "express";
 import multer from "multer";
+import { listarPosts, postarNovoPost, uploadImagem, atualizarNovoPost } from "../controllers/postsController.js";
+import cors from "cors";
 
-import { listarPosts, postarNovoPost, uploadImagem } from "../controllers/postsController.js";
-
-// Function to get all posts from the database
-const routes = (app) => {
-    // Parse JSON bodies (as sent by API clients)
-    app.use(express.json());
-    // Parse URL-encoded bodies (as sent by HTML forms)
-    app.get("/posts", listarPosts);
-    app.post("/posts", postarNovoPost)
-    app.post("/upload", upload.single("imagem"), uploadImagem);
+const corsOptions = {
+    origin: "http://localhost:8000",
+    optionsSuccessStatus: 200
 };
 
 // Multer configuration to upload files to Windows
@@ -29,6 +24,18 @@ const routes = (app) => {
 
 // Multer configuration to upload files to Linux or MacOS
 const upload = multer({ dest: "uploads/" });
+
+// Function to get all posts from the database
+const routes = (app) => {
+    // Parse JSON bodies (as sent by API clients)
+    app.use(express.json());
+    app.use(cors(corsOptions));
+    // Parse URL-encoded bodies (as sent by HTML forms)
+    app.get("/posts", listarPosts);
+    app.post("/posts", postarNovoPost)
+    app.post("/upload", upload.single("imagem"), uploadImagem);
+    app.put("/upload/:id", atualizarNovoPost);
+};
 
 // Export the routes
 export default routes;
