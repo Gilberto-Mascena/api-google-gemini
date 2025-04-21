@@ -1,5 +1,5 @@
 
-[English](https://github.com/Gilberto-Mascena/api-google-gemini/blob/main/README-en.md) |
+[English](https://github.com/Gilberto-Mascena/api-google-gemini/blob/main/README_en.md) |
 [Português Brasileiro](https://github.com/Gilberto-Mascena/api-google-gemini/blob/main/README.md)
 
 ![Status de Manutenção](https://img.shields.io/badge/Maintained-Yes-brightgreen?style=for-the-badge)
